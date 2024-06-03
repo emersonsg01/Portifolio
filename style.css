@@ -13,7 +13,7 @@ body, html {
     background-image: url('background-image.png');
     background-size: cover;
     background-position: center;
-    display: absolute;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -80,7 +80,7 @@ main {
 }
 
 .link-item a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1rem;
 }
