@@ -1,220 +1,299 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Emerson Gonçalves | Desenvolvedor de Software</title>
-    <meta name="description" content="Portfólio de Emerson de Souza Gonçalves, desenvolvedor de software em São José dos Campos – SP. Projetos web, jogos, automação com IA e mods em Java.">
-    <meta name="theme-color" content="#07080d">
-    <meta property="og:title" content="Emerson Gonçalves | Desenvolvedor de Software">
-    <meta property="og:description" content="Projetos web, jogos, automação com IA e mods em Java.">
-    <meta property="og:image" content="profile.jpg">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2307080d'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='28' fill='%237cf4c4'>EG</text></svg>">
+    <title>Emerson Gonçalves · Desenvolvedor de Software</title>
+    <meta name="description" content="Portfólio de Emerson de Souza Gonçalves, desenvolvedor de software em São José dos Campos – SP. Aplicações web, jogos, automações com IA e mods em Java.">
+    <meta name="theme-color" content="#0b0b0c">
+    <meta property="og:title" content="Emerson Gonçalves · Desenvolvedor de Software">
+    <meta property="og:description" content="Aplicações web, jogos, automações com IA e mods em Java. Do pixel ao servidor.">
+    <meta property="og:image" content="assets/shots/pokedex.webp">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%230b0b0c'/><text x='50%' y='56%' dominant-baseline='middle' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='36' fill='%23ff6a2b'>e</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
+    <script>
+        // aplica o tema salvo antes da pintura para evitar flash
+        try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    </script>
 </head>
 <body>
-    <div class="glow glow-1" aria-hidden="true"></div>
-    <div class="glow glow-2" aria-hidden="true"></div>
+    <canvas id="field" class="field" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
 
     <header class="nav" id="nav">
-        <div class="container nav-inner">
-            <a href="#inicio" class="logo" aria-label="Início">
-                <span class="logo-mark">EG</span>
-                <span class="logo-text">emerson<span class="accent">.dev</span></span>
-            </a>
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+        <a href="#inicio" class="logo" aria-label="Início">
+            <span class="logo-e">e</span><span class="logo-dot"></span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#arquivo">Arquivo</a>
+            <a href="#trajetoria">Trajetória</a>
+            <a href="#contato">Contato</a>
+        </nav>
+        <div class="nav-actions">
+            <button class="kbd-btn" id="openPalette" aria-label="Abrir paleta de comandos">
+                <span class="kbd-icon">⌘</span><span>K</span>
+            </button>
+            <button class="icon-btn" id="themeToggle" aria-label="Alternar tema claro e escuro">
+                <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.2M12 19.8V22M4.9 4.9l1.6 1.6M17.5 17.5l1.6 1.6M2 12h2.2M19.8 12H22M4.9 19.1l1.6-1.6M17.5 6.5l1.6-1.6"/></svg>
+                <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 1 1 9.4 3.5a7 7 0 0 0 11.1 11.1Z"/></svg>
+            </button>
+            <button class="icon-btn nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
                 <span></span><span></span>
             </button>
-            <nav class="nav-links" id="navLinks">
-                <a href="#sobre">Sobre</a>
-                <a href="#stack">Stack</a>
-                <a href="#projetos">Projetos</a>
-                <a href="#contato" class="btn btn-small">Contato</a>
-            </nav>
         </div>
     </header>
 
     <main>
         <!-- HERO -->
-        <section class="hero container" id="inicio">
-            <div class="hero-text">
-                <p class="eyebrow"><span class="dot"></span> Disponível para novos projetos</p>
-                <h1>
-                    Olá, eu sou <span class="gradient-text">Emerson</span>.<br>
-                    Eu crio <span class="typed" id="typed">aplicações web</span><span class="caret" aria-hidden="true"></span>
-                </h1>
-                <p class="lead">
-                    Desenvolvedor de software em São José dos Campos – SP. Gosto de transformar ideias em
-                    produtos que funcionam: de sites otimizados para SEO a jogos multijogador,
-                    automações com IA e mods para Minecraft.
-                </p>
-                <div class="hero-cta">
-                    <a href="#projetos" class="btn">Ver projetos</a>
-                    <a href="https://wa.me/5512996200288/" class="btn btn-ghost" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <section class="hero" id="inicio">
+            <div class="wrap">
+                <div class="hero-meta mono">
+                    <span><span class="pulse"></span>Disponível para novos projetos</span>
+                    <span class="hide-sm">São José dos Campos, SP · <span id="clock">--:--</span> BRT</span>
                 </div>
-                <ul class="hero-stats">
-                    <li><strong data-count="32">32</strong><span>repositórios públicos</span></li>
-                    <li><strong data-count="10">10</strong><span>projetos no ar</span></li>
-                    <li><strong data-count="8">8</strong><span>linguagens</span></li>
-                </ul>
+
+                <h1 class="hero-title" aria-label="Emerson Gonçalves">
+                    <span class="line"><span class="word">Emerson</span></span>
+                    <span class="line"><span class="word serif">Gonçalves<span class="accent">.</span></span></span>
+                </h1>
+
+                <div class="hero-grid">
+                    <div class="hero-copy">
+                        <p class="lead">
+                            Desenvolvedor de software. Construo
+                            <em>aplicações web, jogos e automações com IA</em>, do pixel ao servidor.
+                        </p>
+                        <div class="hero-cta">
+                            <a href="#projetos" class="btn btn-primary">Ver projetos <span aria-hidden="true">↓</span></a>
+                            <a href="https://wa.me/5512996200288/" class="btn btn-ghost" target="_blank" rel="noopener">Falar no WhatsApp</a>
+                        </div>
+                        <dl class="stats">
+                            <div><dt class="mono">repositórios</dt><dd data-count="38" id="statRepos">38</dd></div>
+                            <div><dt class="mono">projetos no ar</dt><dd data-count="7">7</dd></div>
+                            <div><dt class="mono">no GitHub desde</dt><dd>2022</dd></div>
+                        </dl>
+                    </div>
+
+                    <div class="terminal" id="terminal">
+                        <div class="term-bar">
+                            <i></i><i></i><i></i>
+                            <span class="mono">emerson@portfolio: ~</span>
+                        </div>
+                        <div class="term-body mono" id="termBody" aria-live="polite"></div>
+                        <form class="term-input mono" id="termForm" autocomplete="off">
+                            <label for="termField"><span class="prompt">➜</span> <span class="path">~</span></label>
+                            <input id="termField" type="text" spellcheck="false" placeholder="digite help" aria-label="Comando do terminal">
+                        </form>
+                    </div>
+                </div>
             </div>
 
-            <div class="hero-visual">
-                <div class="avatar-wrap">
-                    <div class="avatar-ring"></div>
-                    <img src="profile.jpg" alt="Foto de Emerson de Souza Gonçalves" class="avatar" width="279" height="279">
-                    <span class="chip chip-a">⚛️ React</span>
-                    <span class="chip chip-b">☕ Java</span>
-                    <span class="chip chip-c">🐍 Python</span>
-                </div>
-                <div class="code-card" aria-hidden="true">
-                    <div class="code-head"><i></i><i></i><i></i><span>emerson.js</span></div>
-<pre><code><span class="k">const</span> <span class="v">emerson</span> = {
-  <span class="p">cidade</span>: <span class="s">'São José dos Campos'</span>,
-  <span class="p">formação</span>: <span class="s">'ADS · Anhembi Morumbi'</span>,
-  <span class="p">foco</span>: [<span class="s">'web'</span>, <span class="s">'jogos'</span>, <span class="s">'IA'</span>],
-  <span class="p">café</span>: <span class="b">true</span>,
-};</code></pre>
+            <div class="marquee" aria-hidden="true">
+                <div class="marquee-track">
+                    <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span><span>Node.js</span><span>Express</span><span>Python</span><span>Java</span><span>PHP</span><span>MongoDB</span><span>SQL</span><span>Tailwind</span><span>Vite</span><span>Vitest</span><span>Fabric</span><span>MoviePy</span><span>Vercel</span>
+                    <span>JavaScript</span><span>TypeScript</span><span>React</span><span>Vue</span><span>Node.js</span><span>Express</span><span>Python</span><span>Java</span><span>PHP</span><span>MongoDB</span><span>SQL</span><span>Tailwind</span><span>Vite</span><span>Vitest</span><span>Fabric</span><span>MoviePy</span><span>Vercel</span>
                 </div>
             </div>
         </section>
 
         <!-- SOBRE -->
-        <section class="section container" id="sobre">
-            <div class="section-head reveal">
-                <span class="section-tag">01 · Sobre</span>
-                <h2>Código, criatividade e curiosidade</h2>
-            </div>
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>
-                        Sou formado em <strong>Análise e Desenvolvimento de Sistemas</strong> pela Universidade
-                        Anhembi Morumbi. Trabalho com o ecossistema JavaScript (React, Vue, Node.js),
-                        mas gosto de experimentar: escrevo jogos e mods em <strong>Java</strong>, automações
-                        com <strong>Python</strong> e APIs em <strong>PHP</strong> e <strong>TypeScript</strong>.
-                    </p>
-                    <p>
-                        Antes do código, eu já trabalhava com edição de vídeo, áudio e design gráfico.
-                        Por isso cuido tanto da interface e da experiência quanto da lógica por trás delas.
-                    </p>
-                </div>
-                <ul class="about-cards">
-                    <li class="card reveal">
-                        <span class="card-icon">🎓</span>
-                        <h3>Formação</h3>
-                        <p>Análise e Desenvolvimento de Sistemas: UAM, Universidade Anhembi Morumbi.</p>
-                    </li>
-                    <li class="card reveal">
-                        <span class="card-icon">📍</span>
-                        <h3>Localização</h3>
-                        <p>São José dos Campos, São Paulo. Atendo remoto em todo o Brasil.</p>
-                    </li>
-                    <li class="card reveal">
-                        <span class="card-icon">🎬</span>
-                        <h3>Além do código</h3>
-                        <p>Edição de vídeo e áudio e design gráfico para dar acabamento aos projetos.</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <section class="section" id="sobre">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <span class="index mono">01</span>
+                    <h2>Código com <em>acabamento</em>.</h2>
+                </header>
 
-        <!-- STACK -->
-        <section class="section container" id="stack">
-            <div class="section-head reveal">
-                <span class="section-tag">02 · Stack</span>
-                <h2>Ferramentas que uso no dia a dia</h2>
-            </div>
-            <div class="stack-grid">
-                <div class="stack-group card reveal">
-                    <h3>Front-end</h3>
-                    <ul class="tags">
-                        <li>HTML</li><li>CSS</li><li>JavaScript</li><li>TypeScript</li>
-                        <li>React</li><li>Vue</li><li>Vite</li><li>Tailwind CSS</li>
-                    </ul>
-                </div>
-                <div class="stack-group card reveal">
-                    <h3>Back-end &amp; dados</h3>
-                    <ul class="tags">
-                        <li>Node.js</li><li>Express</li><li>PHP</li><li>SQL</li>
-                        <li>MongoDB</li><li>APIs REST</li>
-                    </ul>
-                </div>
-                <div class="stack-group card reveal">
-                    <h3>Jogos, IA &amp; automação</h3>
-                    <ul class="tags">
-                        <li>Java</li><li>Fabric (Minecraft)</li><li>Python</li>
-                        <li>MoviePy</li><li>APIs de IA</li><li>Canvas</li>
-                    </ul>
-                </div>
-                <div class="stack-group card reveal">
-                    <h3>Ferramentas</h3>
-                    <ul class="tags">
-                        <li>Git &amp; GitHub</li><li>Vercel</li><li>Vitest</li><li>Gradle</li>
-                        <li>Edição de vídeo</li><li>Design gráfico</li>
-                    </ul>
+                <div class="bento">
+                    <article class="tile tile-bio reveal">
+                        <p class="big">
+                            Sou formado em Análise e Desenvolvimento de Sistemas e trabalho principalmente com o
+                            ecossistema <strong>JavaScript</strong>: React, Vue e Node.js. Gosto de experimentar,
+                            então também escrevo jogos e mods em <strong>Java</strong>, automações com
+                            <strong>Python</strong> e APIs em <strong>PHP</strong> e <strong>TypeScript</strong>.
+                        </p>
+                        <p>
+                            Antes do código, eu já editava vídeo e áudio e fazia design gráfico. Por isso cuido da
+                            interface e da experiência com o mesmo carinho que dou à lógica por trás delas.
+                        </p>
+                    </article>
+
+                    <figure class="tile tile-photo reveal">
+                        <img src="profile.jpg" alt="Foto de Emerson de Souza Gonçalves" width="279" height="279" loading="lazy">
+                        <figcaption class="mono">Emerson de Souza Gonçalves</figcaption>
+                    </figure>
+
+                    <article class="tile tile-place reveal">
+                        <span class="tile-label mono">Base</span>
+                        <h3>São José dos Campos<span class="muted">, SP</span></h3>
+                        <p class="muted">Atendo remoto em todo o Brasil.</p>
+                        <div class="radar" aria-hidden="true"><span></span><span></span><span></span></div>
+                    </article>
+
+                    <article class="tile tile-edu reveal">
+                        <span class="tile-label mono">Formação</span>
+                        <h3>Análise e Desenvolvimento de Sistemas</h3>
+                        <p class="muted">Universidade Anhembi Morumbi</p>
+                    </article>
+
+                    <article class="tile tile-langs reveal">
+                        <span class="tile-label mono">Linguagens nos meus repositórios</span>
+                        <div class="lang-bar" id="langBar"></div>
+                        <ul class="lang-legend mono" id="langLegend"></ul>
+                    </article>
+
+                    <article class="tile tile-extra reveal">
+                        <span class="tile-label mono">Além do código</span>
+                        <ul class="pills">
+                            <li>Edição de vídeo</li><li>Edição de áudio</li><li>Design gráfico</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- PROJETOS -->
-        <section class="section container" id="projetos">
-            <div class="section-head reveal">
-                <span class="section-tag">03 · Projetos</span>
-                <h2>Alguns projetos que construí</h2>
-                <p class="section-sub">Os destaques primeiro. Abaixo estão os demais, com filtro por categoria.</p>
+        <!-- PROJETOS EM DESTAQUE -->
+        <section class="section" id="projetos">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <span class="index mono">02</span>
+                    <h2>Projetos em <em>destaque</em>.</h2>
+                    <p class="section-sub">Uma seleção do que construí: produtos no ar, jogos em tempo real e experimentos com IA.</p>
+                </header>
+                <div class="cases" id="featured"></div>
             </div>
+        </section>
 
-            <div class="featured" id="featured"></div>
+        <!-- ARQUIVO -->
+        <section class="section" id="arquivo">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <span class="index mono">03</span>
+                    <h2>Arquivo <em>completo</em>.</h2>
+                    <p class="section-sub">Tudo o que vale ver, do mais recente ao mais antigo. Passe o mouse para ver uma prévia dos que estão no ar.</p>
+                </header>
 
-            <div class="filters reveal" role="tablist" aria-label="Filtrar projetos">
-                <button class="filter active" data-filter="todos" role="tab" aria-selected="true">Todos</button>
-                <button class="filter" data-filter="web" role="tab" aria-selected="false">Web</button>
-                <button class="filter" data-filter="jogos" role="tab" aria-selected="false">Jogos</button>
-                <button class="filter" data-filter="backend" role="tab" aria-selected="false">Back-end</button>
-                <button class="filter" data-filter="java" role="tab" aria-selected="false">Java / Minecraft</button>
-                <button class="filter" data-filter="ia" role="tab" aria-selected="false">IA &amp; automação</button>
+                <div class="filters reveal" role="tablist" aria-label="Filtrar projetos">
+                    <button class="filter active" data-filter="todos" role="tab" aria-selected="true">Todos <sup id="countAll"></sup></button>
+                    <button class="filter" data-filter="web" role="tab" aria-selected="false">Web</button>
+                    <button class="filter" data-filter="jogos" role="tab" aria-selected="false">Jogos</button>
+                    <button class="filter" data-filter="backend" role="tab" aria-selected="false">Back-end</button>
+                    <button class="filter" data-filter="java" role="tab" aria-selected="false">Java / Minecraft</button>
+                    <button class="filter" data-filter="ia" role="tab" aria-selected="false">IA &amp; automação</button>
+                </div>
+
+                <div class="archive reveal" role="table" aria-label="Lista de projetos">
+                    <div class="row row-head mono" role="row">
+                        <span role="columnheader">Ano</span>
+                        <span role="columnheader">Projeto</span>
+                        <span role="columnheader" class="hide-md">Stack</span>
+                        <span role="columnheader" class="t-right">Links</span>
+                    </div>
+                    <div id="projects" role="rowgroup"></div>
+                </div>
+
+                <div class="more reveal">
+                    <a href="https://github.com/emersonsg01?tab=repositories" class="link-arrow" target="_blank" rel="noopener">Ver todos os repositórios no GitHub <span aria-hidden="true">↗</span></a>
+                </div>
             </div>
+            <div class="peek" id="peek" aria-hidden="true"><img alt=""></div>
+        </section>
 
-            <div class="projects" id="projects"></div>
-
-            <div class="more reveal">
-                <a href="https://github.com/emersonsg01?tab=repositories" class="btn btn-ghost" target="_blank" rel="noopener">Ver todos os repositórios no GitHub →</a>
+        <!-- TRAJETÓRIA -->
+        <section class="section" id="trajetoria">
+            <div class="wrap">
+                <header class="section-head reveal">
+                    <span class="index mono">04</span>
+                    <h2>Trajetória em <em>commits</em>.</h2>
+                </header>
+                <ol class="timeline">
+                    <li class="reveal">
+                        <span class="year mono">2022</span>
+                        <div>
+                            <h3>Primeiro deploy</h3>
+                            <p>Crio a conta no GitHub e publico a primeira Pokédex, consumindo a PokeAPI com JavaScript puro.</p>
+                        </div>
+                    </li>
+                    <li class="reveal">
+                        <span class="year mono">2024</span>
+                        <div>
+                            <h3>Do front ao back</h3>
+                            <p>Jogos no navegador, desafios em Node.js e uma API RESTful em PHP puro. Começo a pensar em sistemas inteiros, não só em telas.</p>
+                        </div>
+                    </li>
+                    <li class="reveal">
+                        <span class="year mono">2025</span>
+                        <div>
+                            <h3>Cliente real e full stack</h3>
+                            <p>Site com SEO para uma corretora de planos de saúde com mais de 40 anos de mercado, um PDV de supermercado, uma aplicação TypeScript com Express e MongoDB, e Tetris em Java com MVC.</p>
+                        </div>
+                    </li>
+                    <li class="reveal">
+                        <span class="year mono">2026</span>
+                        <div>
+                            <h3>IA e tempo real</h3>
+                            <p>Agentes de IA que produzem vídeos sozinhos, NPCs inteligentes no Minecraft, truco multijogador e a nova Pokédex em React 19 com os 1025 Pokémon.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
         <!-- CONTATO -->
-        <section class="section container" id="contato">
-            <div class="contact card reveal">
-                <div class="contact-text">
-                    <span class="section-tag">04 · Contato</span>
-                    <h2>Tem um projeto em mente?</h2>
-                    <p>Pode ser um site, um sistema ou uma ideia que você ainda está tirando do papel. Me chama e conversamos.</p>
-                </div>
-                <div class="contact-links">
+        <section class="section contact" id="contato">
+            <div class="wrap">
+                <span class="index mono reveal">05 · Contato</span>
+                <h2 class="contact-title reveal">Tem uma ideia?<br><em>Vamos construir.</em></h2>
+                <p class="contact-sub reveal">Pode ser um site, um sistema ou algo que você ainda está tirando do papel. Me chama e conversamos.</p>
+
+                <div class="contact-links reveal">
                     <a href="https://wa.me/5512996200288/" class="contact-link" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
-                        <span><strong>WhatsApp</strong><small>(12) 99620-0288</small></span>
+                        <span><strong>WhatsApp</strong><small class="mono">(12) 99620-0288</small></span>
+                        <span class="arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="https://www.linkedin.com/in/emerson-gon%C3%A7alves-a9ba6582/" class="contact-link" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 2H3.6A1.6 1.6 0 0 0 2 3.6v16.8A1.6 1.6 0 0 0 3.6 22h16.8a1.6 1.6 0 0 0 1.6-1.6V3.6A1.6 1.6 0 0 0 20.4 2ZM8 19H5V9.5h3V19ZM6.5 8.2a1.7 1.7 0 1 1 0-3.5 1.7 1.7 0 0 1 0 3.5ZM19 19h-3v-4.6c0-1.1 0-2.5-1.5-2.5S12.8 13 12.8 14.3V19h-3V9.5h2.9v1.3a3.2 3.2 0 0 1 2.8-1.6c3 0 3.5 2 3.5 4.5V19Z"/></svg>
-                        <span><strong>LinkedIn</strong><small>Emerson Gonçalves</small></span>
+                        <span><strong>LinkedIn</strong><small class="mono">Emerson Gonçalves</small></span>
+                        <span class="arrow" aria-hidden="true">↗</span>
                     </a>
                     <a href="https://github.com/emersonsg01" class="contact-link" target="_blank" rel="noopener">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7 3.6 3.6 0 0 1 .1-2.7s.8-.3 2.8 1a9.5 9.5 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .6 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
-                        <span><strong>GitHub</strong><small>@emersonsg01</small></span>
+                        <span><strong>GitHub</strong><small class="mono">@emersonsg01</small></span>
+                        <span class="arrow" aria-hidden="true">↗</span>
                     </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer container">
-        <p>© <span id="year">2026</span> Emerson de Souza Gonçalves. Feito à mão com HTML, CSS e JavaScript.</p>
-        <a href="#inicio" class="to-top" aria-label="Voltar ao topo">↑</a>
+    <footer class="footer">
+        <div class="wrap footer-inner mono">
+            <span>© <span id="year">2026</span> Emerson de Souza Gonçalves</span>
+            <span class="hide-sm">Feito à mão com HTML, CSS e JavaScript · Dica: aperte <kbd>Ctrl</kbd> + <kbd>K</kbd></span>
+            <a href="#inicio" class="to-top">Voltar ao topo ↑</a>
+        </div>
     </footer>
+
+    <!-- PALETA DE COMANDOS -->
+    <div class="palette" id="palette" hidden>
+        <div class="palette-backdrop" data-close></div>
+        <div class="palette-box" role="dialog" aria-modal="true" aria-label="Paleta de comandos">
+            <div class="palette-search">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input id="paletteInput" type="text" placeholder="Para onde vamos?" autocomplete="off" spellcheck="false" aria-label="Buscar comando">
+                <kbd class="mono">Esc</kbd>
+            </div>
+            <ul class="palette-list" id="paletteList" role="listbox"></ul>
+        </div>
+    </div>
+
+    <div class="toast mono" id="toast" role="status" aria-live="polite"></div>
 
     <script src="./script.js"></script>
 </body>
