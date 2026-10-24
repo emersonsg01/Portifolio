@@ -10,17 +10,20 @@ It is plain static HTML, CSS and vanilla JS. There is no build step, package man
 
 ## Structure
 
-- `index.html`: the static sections, in order: floating pill nav, hero (giant name + interactive terminal + stack marquee), `#sobre` (bento grid), `#projetos` (featured cases), `#arquivo` (filterable project table), `#trajetoria` (timeline), `#contato`, footer, then the command palette (`#palette`) and `#toast`. Contact and social icons are inline SVG.
+- `index.html`: the static sections, in order: floating pill nav, hero (giant name + interactive terminal + stack marquee), `#sobre` (bento grid), `#projetos` (the `#spotlights` case studies, then featured cases), `#arquivo` (filterable project table), `#trajetoria` (timeline), `#contato`, footer, then the command palette (`#palette`) and `#toast`. Contact and social icons are inline SVG.
 - `script.js`: **project content lives here, not in the HTML.**
+  - `spotlights` renders the in-depth "Em foco" case studies into `#spotlights` (Terra Viva, Lumen Cut, Ultra Upscale), each an `<article>` whose id is its `id` (used by the palette). Blocks: `problem`, `list`, `cards`, `chips`, `metrics`, and `risk` (only Terra Viva, which adds the risk-formula block). Numbers come from each project's own docs in `F:\codigos\<repo>` (Terra Viva `docs/analise-de-risco.md` and `docs/desempenho.md`, Lumen Cut `docs/ROADMAP-V2.md`, Ultra Upscale `README.md`); keep them in sync.
   - `featured` renders the large cases into `#featured`. Each one has either `shot` (a screenshot in `assets/shots/`, shown in a browser frame) or `art`, a hand-drawn cover from the `ARTS` map (`pipeline`, `cards`, `voxel`).
-  - `projects` renders the archive rows into `#projects`, filtered by `cat` (`web`, `jogos`, `backend`, `java`, `ia`). Rows with `shot` show a floating preview on hover. Leave `demo` out when there is no live deploy.
+  - `projects` renders the archive rows into `#projects`, filtered by `cat` (`web`, `jogos`, `backend`, `java`, `ia`). Rows with `shot` show a floating preview on hover. Leave `demo` out when there is no live deploy. Leave `repo` out for private repos, and the row shows a "Privado" pill instead of the code link.
   - `LANG_SHARE` feeds the language bar in the bento; it is hand-counted from each own repo's primary language.
   - Also: the terminal commands (`commands` in `setupTerminal`), the Ctrl/⌘+K palette entries (`all` in `setupPalette`), the interactive dot field on a fixed `<canvas>`, the São Paulo clock, theme toggle (saved in `localStorage`), nav scroll-spy and `.reveal` animations.
 - `style.css`: design tokens are CSS variables on `:root` (dark) and `:root[data-theme="light"]`. Fonts are Geist, Geist Mono and Instrument Serif (italic `<em>` is the accent style). Breakpoints are at 960px and 720px. Any element with `.reveal` starts invisible until the IntersectionObserver adds `.visible`. Case covers (`.case-visual`) stay dark in both themes on purpose.
 
 ## Things to know
 
-- The hero stats are in `index.html`. The repo count is fetched live from the GitHub API and falls back to the hardcoded number; "projetos no ar" (8) must be updated by hand.
+- The hero stats are in `index.html`. The repo count is fetched live from the GitHub API and falls back to the hardcoded number; "projetos no ar" (9) must be updated by hand.
 - Screenshots in `assets/shots/` were taken with headless Chrome at 1440×900 and saved as WebP at 1200px wide. Retake them when a live project changes.
+- Terra Viva (`monitoramento-climatico`), Lumen Cut and Ultra Upscale are private repos on GitHub, so they have no `repo` and show a "Privado" pill. Terra Viva is deployed at monitoramento-climatico.vercel.app; the other two are Windows desktop apps with no web deploy. Their screenshots were taken by running them locally (Lumen Cut: `node servidor.js` on :5173, with a demo project built through `window.lumen`; Ultra Upscale: `.venv/Scripts/python.exe -m ultra_upscale --no-window --port 7860`). Never screenshot Ultra Upscale's Biblioteca: it shows the owner's personal photos.
+- `projects` with no `repo` show "Privado"; the terminal's `projetos` command lists them as "(app desktop)".
 - As of Oct 2026 these deploys return 404, so they have no `demo`: site-plano-saude, projeto-fn, novo-truco-multi-jogador, pocket-monsters-backend.
 - Old assets from the first layout are no longer referenced: `background-image.png`, `whatsapp.png`, `git.png`, `github.png`, `game.png`, `pokedex.png`, `roleta.png`, `1.svg`, `2.svg`, `3.svg`. Only `profile.jpg` and `assets/shots/` are used.

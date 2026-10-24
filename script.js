@@ -76,9 +76,119 @@ const featured = [
     },
 ];
 
+// Estudos de caso "Em foco": renderizados em #spotlights, antes dos destaques.
+// Cada um tem blocos opcionais: problem, list, risk (só o Terra Viva), cards, chips e metrics.
+// Os números vêm da documentação de cada repositório (docs/ do Terra Viva e do Lumen Cut, README do Ultra Upscale).
+// Sem `demo` nem `repo` (repositório privado e app desktop), o cabeçalho mostra só o selo "Privado".
+const spotlights = [
+    {
+        id: 'terra-viva',
+        title: 'Terra Viva',
+        titleHtml: 'Terra <em>Viva</em>',
+        kicker: 'Monitoramento climático global',
+        live: true,
+        lead: 'Um painel que cruza satélites, agências meteorológicas e redes de sensores do mundo inteiro para responder uma pergunta simples: o que está acontecendo com o clima neste lugar, agora?',
+        shot: 'assets/shots/terra-viva.webp',
+        shotAlt: 'Tela Planeta do Terra Viva: globo 3D com focos de queimada sobre a América do Sul',
+        demo: 'https://monitoramento-climatico.vercel.app',
+        stack: ['Vue 2', 'Vuetify', 'globe.gl', 'three.js', 'WebGL', 'Leaflet', 'axios'],
+        problem: { label: 'O problema', text: 'Os dados sobre o clima existem, mas estão espalhados: queimadas no INPE, sismos no USGS, imagens de satélite na NASA, previsão em outro serviço. Cada fonte mostra só uma parte. O Terra Viva junta todas num lugar e, mais importante, cruza umas com as outras.' },
+        list: { label: '5 telas', items: [
+            ['Planeta', 'Globo 3D com focos de queimada, desmatamento, sismos, ciclones, sombra dia/noite e imagem real de satélite.'],
+            ['Ao vivo', 'A Terra inteira fotografada a 1,5 milhão de km pela câmera EPIC, da NASA.'],
+            ['Análise', 'Índice de risco de 0 a 100 para qualquer ponto do planeta, com observações explicadas.'],
+            ['Radar', 'Radar de chuva animado sobre mapa escuro ou satélite.'],
+            ['Alertas', 'Feed global por gravidade e 16 cidades monitoradas, ordenadas por risco.'],
+        ] },
+        risk: ['Térmica', 'Chuva', 'Vento', 'UV', 'Qualidade do ar', 'Queimadas', 'Sismos', 'Eventos naturais', 'Clima espacial'],
+        cards: { label: 'Análise cruzada: o que nenhuma fonte diz sozinha', items: [
+            ['danger', 'Queimadas ativas em plena estiagem', 'Focos do INPE a menos de 150 km, semana sem chuva e 10+ dias secos.', 'INPE · Open-Meteo'],
+            ['warn', 'Vento sopra dos focos de queimada', 'O rumo médio dos focos coincide com a direção de onde o vento vem: a fumaça chega até você.', 'INPE · Open-Meteo · CAMS'],
+            ['danger', 'Ciclone se aproximando', 'Compara as duas últimas posições da trajetória para saber se ele chega ou se afasta.', 'NASA EONET'],
+            ['info', 'Chance de aurora', 'Índice Kp alto o bastante para a sua latitude, com a cobertura de nuvens prevista.', 'NOAA SWPC · Open-Meteo'],
+        ] },
+        chips: { label: '11 fontes de dados · todas gratuitas e sem chave de API', items: ['INPE Queimadas', 'INPE DETER', 'NASA GIBS', 'NASA EPIC', 'NASA EONET', 'NOAA STAR', 'NOAA SWPC', 'USGS', 'Open-Meteo', 'RainViewer', 'BigDataCloud'] },
+        metrics: { label: 'Desempenho · antes → depois da otimização', rows: [
+            ['FPS do globo', '15', '120'],
+            ['Chamadas de desenho', '3.803', '~500'],
+            ['Tempo até os dados', '~50 s', '1,5 s'],
+            ['JavaScript inicial', '1.137 KB', '306 KB'],
+            ['Fonte de ícones', '394 KB', '9 KB'],
+        ] },
+    },
+    {
+        id: 'lumen-cut',
+        title: 'Lumen Cut',
+        titleHtml: 'Lumen <em>Cut</em>',
+        kicker: 'Editor de vídeo com IA · app para Windows',
+        lead: 'Um editor de vídeo completo, escrito em HTML, CSS e JavaScript puros, que roda no navegador ou como programa instalável. Você descreve a edição e a IA corta, cria títulos animados, aplica cor, efeitos e transições sozinha.',
+        shot: 'assets/shots/lumen-cut.webp',
+        shotAlt: 'Lumen Cut com um projeto aberto: prévia com título animado, linha do tempo com quatro clipes, transições e trilha de áudio',
+        stack: ['JavaScript', 'WebGL2', 'WebCodecs', 'FFmpeg.wasm', 'Tauri', 'Rust', 'FFmpeg', 'Real-ESRGAN', 'MCP'],
+        problem: { label: 'A ideia', text: 'Editores profissionais são pesados e caros; os de navegador são limitados. O Lumen Cut usa o melhor de cada lado: no navegador, WebGL2 e WebCodecs põem a GPU para compor e codificar; no desktop (Tauri + Rust), o FFmpeg nativo exporta sem limite de memória, com todos os núcleos ou o codificador da placa. São cerca de 12.700 linhas de JavaScript sem nenhuma etapa de build.' },
+        list: { label: 'O que ele faz', items: [
+            ['Edição automática', 'Claude, GPT ou modelos locais (LM Studio, Ollama) editam o projeto com 20 ferramentas, em até 40 passos, desfeitos com um único Ctrl+Z.'],
+            ['Servidor MCP', 'Agentes externos como Claude Code, Claude Desktop e Cursor editam a linha do tempo.'],
+            ['Cor de cinema', 'Rodas de cor, curvas, LUTs .cube, chroma key e filtros prontos, com resultado idêntico na GPU e na CPU.'],
+            ['Áudio', 'Redução de ruído e sincronização automática de câmera e gravador.'],
+            ['Melhoramento', 'Câmera lenta suave por fluxo óptico até 240 fps e ampliação 4× com Real-ESRGAN.'],
+        ] },
+        cards: { label: 'Como a IA edita um vídeo', items: [
+            ['info', '1 · Analisa as mídias', 'Mede o volume por segundo, acha silêncios e cortes de cena e, com modelos de visão, olha os quadros.', 'analisar_midia · ver_quadros'],
+            ['violet', '2 · Monta a edição', 'Corta, divide, cria títulos animados e ilustrações em SVG, anima com keyframes.', 'dividir_clipe · adicionar_texto · animar'],
+            ['warn', '3 · Dá o acabamento', 'Aplica filtros, correção de cor, efeitos, chroma key, transições e sincroniza o áudio.', 'corrigir_cor · aplicar_efeitos'],
+            ['good', '4 · Você decide', 'O passo a passo aparece no painel. No fim: Manter ou Desfazer tudo, numa ação só.', 'agente com até 40 passos'],
+        ] },
+        chips: { label: 'Formatos e projetos', items: ['MP4 H.264', 'MP4 H.265', 'MOV', 'WebM VP9', 'GIF', 'até 4K', '24 a 60 fps', '16:9 · 9:16 · 1:1 · 4:5 · 21:9', 'câmera lenta 0,1×', 'time-lapse 100×'] },
+        metrics: { label: 'Medido numa RTX 3060', rows: [
+            ['Exportar 1080p pela GPU (projeto de 6,5 s)', '', '1,8 s'],
+            ['CPU + GPU juntas, 720p', '', '0,9 s'],
+            ['Ruído de fundo na fala', '−31 dB', '−48 dB'],
+            ['Diferença CPU × GPU por efeito', '', '0,03/255'],
+            ['Precisão da sincronia de áudio', '', '< 1 ms'],
+        ] },
+    },
+    {
+        id: 'ultra-upscale',
+        title: 'Ultra Upscale',
+        titleHtml: 'Ultra <em>Upscale</em>',
+        kicker: 'Estúdio fotográfico com IA · 100% local',
+        lead: 'Lightroom, Photoshop, Topaz e um diagramador de álbuns num só programa, rodando no seu PC, em qualquer GPU ou só na CPU, sem nuvem e sem assinatura.',
+        shot: 'assets/shots/ultra-upscale.webp',
+        shotAlt: 'IA Studio do Ultra Upscale com a Auto-Mágica e as receitas prontas de upscale e restauração',
+        stack: ['Python', 'PyTorch', 'FastAPI', 'diffusers', 'spandrel', 'ONNX', 'C#', 'HTML/CSS/JS'],
+        problem: { label: 'A ideia', text: 'Quem trabalha com foto paga várias assinaturas e manda as imagens para a nuvem. O Ultra Upscale junta o fluxo inteiro (catalogar, revelar, editar, restaurar e diagramar) num app local, só com modelos de IA abertos, e tem instalador próprio que detecta a GPU e baixa o PyTorch certo.' },
+        list: { label: '5 módulos', items: [
+            ['Biblioteca', 'Catálogo não destrutivo com RAW (ARW, CR3, NEF, DNG…), estrelas, bandeiras e os atalhos do Lightroom.'],
+            ['Revelar', 'Ajustes na GPU em ~130 ms por prévia: curvas, HSL, gradação de cores, ruído, recorte e predefinições.'],
+            ['Editar', 'Camadas, máscaras, 16 modos de mesclagem, seleção de assunto e remoção de objetos por IA.'],
+            ['IA Studio', '26 upscalers, restauração de rostos e de fotos antigas, colorização e edição por prompt.'],
+            ['Álbuns', 'Diagramação automática de lâminas por data e proporção, exportada em PDF 300 dpi.'],
+        ] },
+        cards: { label: 'IA que roda no seu computador', items: [
+            ['info', 'Upscale sem limite', 'Até 16× por etapa e encadeável. Testado com uma saída de 230 megapixels; o limite é a RAM.', 'DRCT-L · HAT · Real-ESRGAN · FSR 1.0'],
+            ['violet', 'Realce generativo', 'Recria só a textura fina, em blocos e sem emendas, mantendo a cor e a estrutura da foto.', 'FLUX.2 klein · SeedVR2'],
+            ['warn', 'Fotos antigas', 'Detecta riscos e poeira, repara, tira o grão e coloriza fotos em preto e branco.', 'LaMa · SCUNet · DDColor'],
+            ['good', 'Auto-Mágica', 'Analisa ruído, nitidez, compressão, rostos e riscos e monta a receita ideal sozinha.', 'análise automática'],
+        ] },
+        chips: { label: 'Roda em qualquer GPU', items: ['NVIDIA (CUDA)', 'AMD e Intel (DirectML)', 'AMD no Linux (ROCm)', 'só CPU', 'modo híbrido GPU + CPU', 'ponte para ComfyUI', 'instalador sem admin'] },
+        metrics: { label: 'Números', rows: [
+            ['Upscalers disponíveis', '', '26'],
+            ['Maior saída testada', '', '230 MP'],
+            ['Prévia do Revelar na GPU', '', '~130 ms'],
+            ['Realce 4× com FLUX.2 (RTX 3060)', '', '~75 s'],
+            ['Restauração com SeedVR2', '', '~11 s'],
+        ] },
+    },
+];
+
 // Arquivo completo: lista filtrável por `cat` (web, jogos, backend, java, ia).
 // `demo` só quando há deploy no ar; `shot` mostra a prévia ao passar o mouse.
+// Sem `repo`, a linha mostra "Privado" no lugar do link para o código.
 const projects = [
+    { year: 2026, title: 'Lumen Cut', lang: 'JavaScript', stack: ['Tauri', 'WebGL2', 'IA'], cat: ['web', 'ia'], desc: 'Editor de vídeo com edição automática por IA e servidor MCP.', shot: 'assets/shots/lumen-cut.webp' },
+    { year: 2026, title: 'Ultra Upscale', lang: 'Python', stack: ['PyTorch', 'FastAPI'], cat: ['ia'], desc: 'Estúdio fotográfico local com 26 upscalers e IA generativa.', shot: 'assets/shots/ultra-upscale.webp' },
+    { year: 2026, title: 'Terra Viva', lang: 'Vue', stack: ['WebGL', 'globe.gl', 'Leaflet'], cat: ['web'], desc: 'Monitoramento climático global com satélites, INPE e índice de risco.', demo: 'https://monitoramento-climatico.vercel.app', shot: 'assets/shots/terra-viva.webp' },
     { year: 2026, title: 'Pokédex', lang: 'JavaScript', stack: ['React 19', 'Vite'], cat: ['web'], desc: 'Os 1025 Pokémon com filtros, favoritos e evoluções.', demo: 'https://pocket-monsters-frontend.vercel.app', repo: GH + 'pocket-monsters-frontend', shot: 'assets/shots/pokedex.webp' },
     { year: 2026, title: 'Fábrica de Vídeos', lang: 'Python', stack: ['IA', 'MoviePy'], cat: ['ia'], desc: 'Agentes de IA que roteirizam, narram e editam vídeos.', repo: GH + 'fabrica-de-videos' },
     { year: 2026, title: 'NPC AI Mod', lang: 'Java', stack: ['Fabric'], cat: ['java', 'jogos', 'ia'], desc: 'NPC com inteligência própria no Minecraft.', repo: GH + 'NPC-AI-mine' },
@@ -106,12 +216,12 @@ const projects = [
 
 // Linguagem principal de cada repositório próprio (sem forks).
 const LANG_SHARE = [
-    ['JavaScript', 10, LANG_COLORS.JavaScript],
+    ['JavaScript', 11, LANG_COLORS.JavaScript],
     ['Java', 4, LANG_COLORS.Java],
     ['HTML & CSS', 4, LANG_COLORS.HTML],
-    ['Python', 3, LANG_COLORS.Python],
+    ['Python', 4, LANG_COLORS.Python],
     ['TypeScript', 2, LANG_COLORS.TypeScript],
-    ['PHP & Vue', 2, LANG_COLORS.Vue],
+    ['PHP & Vue', 3, LANG_COLORS.Vue],
 ];
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -165,7 +275,84 @@ const ARTS = {
 
 function linksFor(p, cls = '') {
     const demo = p.demo ? `<a href="${p.demo}" class="${cls ? cls + ' btn-primary' : 'demo'}" target="_blank" rel="noopener">${cls ? 'Ver online' : 'Online'} ↗</a>` : '';
-    return `${demo}<a href="${p.repo}" class="${cls ? cls + ' btn-ghost' : ''}" target="_blank" rel="noopener">Código</a>`;
+    const repo = p.repo
+        ? `<a href="${p.repo}" class="${cls ? cls + ' btn-ghost' : ''}" target="_blank" rel="noopener">Código</a>`
+        : `<span class="private ${cls ? 'private-lg' : ''}" title="Repositório privado">Privado</span>`;
+    return demo + repo;
+}
+
+function renderSpotlights() {
+    const blocoLista = (b) => `
+            <div class="spot-block">
+                <span class="tile-label mono">${esc(b.label)}</span>
+                <ol class="spot-views">${b.items.map(([n, d]) => `<li><strong>${esc(n)}</strong><span>${esc(d)}</span></li>`).join('')}</ol>
+            </div>`;
+    const blocoRisco = (dims) => `
+        <div class="spot-risk">
+            <div>
+                <span class="tile-label mono">Como o risco é calculado</span>
+                <p>Cada lugar recebe uma nota de 0 a 100 em <strong>9 dimensões</strong>. A maior ameaça domina o índice, mas duas ameaças ao mesmo tempo se somam. UV alto e clima espacial pesam menos porque são rotineiros nos trópicos.</p>
+                <ul class="dims mono">${dims.map((d) => `<li>${esc(d)}</li>`).join('')}</ul>
+            </div>
+            <div class="formula">
+                <span class="formula-eq">índice = 0,65 · s<sub>1</sub> + 0,35 · <span class="frac"><span>s<sub>2</sub> + s<sub>3</sub></span><span>2</span></span></span>
+                <div class="scale mono"><span>Baixo</span><span>Moderado</span><span>Alto</span><span>Crítico</span></div>
+                <small class="muted">s<sub>1</sub> ≥ s<sub>2</sub> ≥ s<sub>3</sub>: as três maiores notas</small>
+            </div>
+        </div>`;
+    const metrica = ([k, a, b]) => `<div><dt>${esc(k)}</dt><dd>${a ? `<s>${esc(a)}</s><span aria-hidden="true">→</span>` : ''}<b>${esc(b)}</b></dd></div>`;
+
+    document.getElementById('spotlights').innerHTML = spotlights.map((s, i) => `
+    <article class="spotlight reveal" id="${s.id}" aria-label="Estudo de caso: ${esc(s.title)}">
+        <div class="spot-head">
+            <div class="spot-tags mono">
+                <span class="badge mono spot-badge">Em foco · ${String(i + 1).padStart(2, '0')}/${String(spotlights.length).padStart(2, '0')}</span>
+                ${s.live ? '<span class="badge mono live">No ar</span>' : '<span class="badge mono">App desktop</span>'}
+                <span class="muted">${esc(s.kicker)}</span>
+            </div>
+            <h3 class="spot-title">${s.titleHtml}</h3>
+            <p class="spot-lead">${esc(s.lead)}</p>
+            <div class="case-links">${linksFor(s, 'btn')}</div>
+        </div>
+
+        <div class="spot-shot">
+            <div class="browser"><div class="browser-bar"><i></i><i></i><i></i><span>${esc(s.demo ? s.demo.replace('https://', '') : s.title)}</span></div><img src="${s.shot}" alt="${esc(s.shotAlt)}" loading="lazy" width="1440" height="900"></div>
+        </div>
+
+        <div class="spot-grid">
+            <div class="spot-block">
+                <span class="tile-label mono">${esc(s.problem.label)}</span>
+                <p>${esc(s.problem.text)}</p>
+            </div>
+            ${blocoLista(s.list)}
+        </div>
+
+        ${s.risk ? blocoRisco(s.risk) : ''}
+
+        <div class="spot-insights">
+            <span class="tile-label mono">${esc(s.cards.label)}</span>
+            <div class="insights">${s.cards.items.map(([sev, t, d, src]) => `
+                <article class="insight sev-${sev}">
+                    <h4>${esc(t)}</h4>
+                    <p>${esc(d)}</p>
+                    <small class="mono">${esc(src)}</small>
+                </article>`).join('')}
+            </div>
+        </div>
+
+        <div class="spot-grid">
+            <div class="spot-block">
+                <span class="tile-label mono">${esc(s.chips.label)}</span>
+                <ul class="pills-sm mono">${s.chips.items.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>
+            </div>
+            <div class="spot-block">
+                <span class="tile-label mono">${esc(s.metrics.label)}</span>
+                <dl class="metrics">${s.metrics.rows.map(metrica).join('')}</dl>
+            </div>
+        </div>
+
+        <ul class="tags spot-stack">${s.stack.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+    </article>`).join('');
 }
 
 function renderFeatured() {
@@ -450,7 +637,7 @@ function setupTerminal() {
             '<span class="hl">Dica:</span> Ctrl + K abre a paleta de comandos.'),
         whoami: () => print('<span class="hl">Emerson de Souza Gonçalves</span>\nDesenvolvedor de software · São José dos Campos, SP\nFormado em ADS pela Universidade Anhembi Morumbi.\n\nDigite <span class="hl">help</span> para ver o que mais dá para fazer.'),
         sobre: () => print('Trabalho com o ecossistema JavaScript (React, Vue, Node.js) e\nexperimento com Java, Python, PHP e TypeScript. Antes do código,\neditava vídeo e áudio e fazia design gráfico.'),
-        projetos: () => print(featured.map((p) => `  ${p.demo ? '<span class="ok">●</span>' : '○'} ${link(p.demo || p.repo, esc(p.title))}`).join('\n') + '\n\n<span class="ok">●</span> no ar   ○ código aberto'),
+        projetos: () => print([...spotlights, ...featured].map((p) => `  ${p.demo ? '<span class="ok">●</span>' : '○'} ${p.demo || p.repo ? link(p.demo || p.repo, esc(p.title)) : esc(p.title) + ' (app desktop)'}`).join('\n') + '\n\n<span class="ok">●</span> no ar   ○ código ou app desktop'),
         stack: () => print('<span class="hl">front</span>   HTML, CSS, JavaScript, TypeScript, React, Vue, Tailwind\n<span class="hl">back</span>    Node.js, Express, PHP, SQL, MongoDB\n<span class="hl">extra</span>   Java + Fabric, Python, MoviePy, APIs de IA, Vitest'),
         contato: () => print(`WhatsApp  ${link(WHATSAPP, '(12) 99620-0288')}\nLinkedIn  ${link(LINKEDIN, 'Emerson Gonçalves')}\nGitHub    ${link(GH, '@emersonsg01')}`),
         ls: () => print('<span class="hl">sobre/  projetos/  arquivo/  trajetoria/  contato/</span>'),
@@ -543,6 +730,7 @@ function setupPalette() {
         { group: 'Ações', icon: '↗', label: 'Abrir WhatsApp', run: () => openUrl(WHATSAPP) },
         { group: 'Ações', icon: '↗', label: 'Abrir LinkedIn', run: () => openUrl(LINKEDIN) },
         { group: 'Ações', icon: '↗', label: 'Abrir GitHub', run: () => openUrl(GH) },
+        ...spotlights.map((s) => ({ group: 'Projetos', icon: '★', label: `${s.title} · estudo de caso`, hint: 'em foco', run: () => goTo(s.id) })),
         ...projects.map((p) => ({
             group: 'Projetos', icon: p.demo ? '●' : '‹›', label: p.title,
             hint: p.demo ? 'ver online' : 'código', run: () => openUrl(p.demo || p.repo),
@@ -605,6 +793,7 @@ function setupPalette() {
 
 document.getElementById('year').textContent = new Date().getFullYear();
 document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+renderSpotlights();
 renderFeatured();
 renderProjects('todos');
 renderLangs();
