@@ -15,7 +15,7 @@ const LANG_COLORS = {
 
 // Projetos em destaque: viram "cases" grandes na seção #projetos.
 // Use `shot` (screenshot em assets/shots) para projetos no ar, ou `art` para uma capa desenhada:
-// 'pipeline', 'cards', 'calc' ou 'voxel'.
+// 'pipeline', 'cards' ou 'voxel'.
 const featured = [
     {
         title: 'Pokédex',
@@ -46,11 +46,11 @@ const featured = [
         repo: GH + 'Novo-Truco-Multi-Jogador',
     },
     {
-        title: 'Retro Pinball',
-        titleHtml: 'Retro <em>Pinball</em>',
+        title: 'Neon Orbit',
+        titleHtml: 'Neon <em>Orbit</em>',
         tint: 'rgba(217, 70, 239, 0.4)',
-        desc: 'Pinball em estética neon jogável direto no navegador, com física, flippers controlados pelo teclado e placar.',
-        tags: ['JavaScript', 'Canvas', 'Física'],
+        desc: 'Pinball synthwave refeito do zero com física própria: bumpers, drop targets, multibola, jackpot, skill shot e tilt. Display de matriz de pontos, sons sintetizados, modo demonstração e controles por toque.',
+        tags: ['JavaScript', 'Canvas', 'Web Audio', 'Física'],
         shot: 'assets/shots/pinball.webp',
         demo: 'https://pin-ball-chi.vercel.app',
         repo: GH + 'PinBall',
@@ -59,9 +59,10 @@ const featured = [
         title: 'Genial',
         titleHtml: '<em>Genial</em>',
         tint: 'rgba(96, 165, 250, 0.35)',
-        desc: 'Calculadora com módulos de matemática, física, finanças, conversão de unidades e gráficos interativos. Fórmulas renderizadas com KaTeX e testes automatizados.',
-        tags: ['React', 'TypeScript', 'Tailwind', 'Chart.js', 'Vitest'],
-        art: 'calc',
+        desc: 'Laboratório de matemática e física: calculadora científica, gráficos de funções, mais de 60 fórmulas que se resolvem para qualquer variável, simulações animadas, conversor, finanças e estatística.',
+        tags: ['React', 'TypeScript', 'Chart.js', 'KaTeX', 'Vitest'],
+        shot: 'assets/shots/genial.webp',
+        demo: 'https://genial-five.vercel.app',
         repo: GH + 'Genial',
     },
     {
@@ -82,13 +83,13 @@ const projects = [
     { year: 2026, title: 'Fábrica de Vídeos', lang: 'Python', stack: ['IA', 'MoviePy'], cat: ['ia'], desc: 'Agentes de IA que roteirizam, narram e editam vídeos.', repo: GH + 'fabrica-de-videos' },
     { year: 2026, title: 'NPC AI Mod', lang: 'Java', stack: ['Fabric'], cat: ['java', 'jogos', 'ia'], desc: 'NPC com inteligência própria no Minecraft.', repo: GH + 'NPC-AI-mine' },
     { year: 2026, title: 'Truco Multijogador', lang: 'JavaScript', stack: ['Node.js'], cat: ['jogos', 'web', 'backend'], desc: 'Truco online em tempo real com cliente e servidor.', repo: GH + 'Novo-Truco-Multi-Jogador' },
-    { year: 2026, title: 'Genial', lang: 'TypeScript', stack: ['React', 'Vitest'], cat: ['web'], desc: 'Calculadora científica, financeira e de física com gráficos.', repo: GH + 'Genial' },
+    { year: 2026, title: 'Genial', lang: 'TypeScript', stack: ['React', 'KaTeX', 'Vitest'], cat: ['web'], desc: 'Laboratório de cálculo com fórmulas, gráficos e simulações.', demo: 'https://genial-five.vercel.app', repo: GH + 'Genial', shot: 'assets/shots/genial.webp' },
+    { year: 2026, title: 'Neon Orbit', lang: 'JavaScript', stack: ['Canvas', 'Web Audio'], cat: ['jogos', 'web'], desc: 'Pinball synthwave com multibola, jackpot e modo demonstração.', demo: 'https://pin-ball-chi.vercel.app', repo: GH + 'PinBall', shot: 'assets/shots/pinball.webp' },
     { year: 2025, title: 'Editor de Imagem', lang: 'JavaScript', stack: ['Canvas'], cat: ['web'], desc: 'Ajustes e filtros aplicados em tempo real no navegador.', repo: GH + 'Projeto-FN' },
     { year: 2025, title: 'Atividades Esportivas', lang: 'TypeScript', stack: ['Express', 'MongoDB', 'React'], cat: ['backend', 'web'], desc: 'Full stack com API REST e CRUD de atividades.', repo: GH + 'Desafio-01-Piracicaba' },
     { year: 2025, title: 'Mod Villagers', lang: 'Java', stack: ['Fabric'], cat: ['java', 'jogos'], desc: 'Expande o comportamento dos aldeões do Minecraft.', repo: GH + 'Mod-Villagers-Minecraft' },
     { year: 2025, title: 'Jocross: Planos de Saúde', lang: 'HTML', stack: ['SEO', 'CSS'], cat: ['web'], desc: 'Site institucional com SEO para uma corretora com 40+ anos de mercado.', repo: GH + 'site-plano-saude' },
     { year: 2025, title: 'Tetris Java Edition', lang: 'Java', stack: ['MVC'], cat: ['jogos', 'java'], desc: 'Tetris com níveis progressivos e ranking de recordes.', repo: GH + 'Tetris-Java-Edition' },
-    { year: 2025, title: 'Retro Pinball', lang: 'JavaScript', stack: ['Canvas'], cat: ['jogos', 'web'], desc: 'Pinball neon com física, jogável no navegador.', demo: 'https://pin-ball-chi.vercel.app', repo: GH + 'PinBall', shot: 'assets/shots/pinball.webp' },
     { year: 2025, title: 'Jogo de Blocos', lang: 'JavaScript', stack: ['Canvas'], cat: ['jogos', 'web'], desc: 'O clássico de encaixar blocos em JavaScript puro.', demo: 'https://jogo-de-blocos.vercel.app', repo: GH + 'Jogo-de-Blocos', shot: 'assets/shots/blocos.webp' },
     { year: 2025, title: 'Calculadora de Juros', lang: 'JavaScript', stack: ['Finanças'], cat: ['web'], desc: 'Juros compostos com aportes mensais, investimento e financiamento.', demo: 'https://calcula-juros.vercel.app', repo: GH + 'Calcula-Juros', shot: 'assets/shots/juros.webp' },
     { year: 2025, title: 'Sistema de Caixa', lang: 'JavaScript', stack: ['PDV'], cat: ['backend', 'web'], desc: 'PDV com código de barras, parcelamento, cupons e estoque.', repo: GH + 'Sistema-Mercado' },
@@ -149,21 +150,6 @@ const ARTS = {
             <div class="card c3"><span>A</span><span class="suit">♠</span><span class="corner-b">A</span></div>
             <div class="card c4 red"><span>7</span><span class="suit">♦</span><span class="corner-b">7</span></div>
             <span class="label">As quatro manilhas · Truco!</span>
-        </div>`,
-    calc: () => `
-        <div class="art art-calc">
-            <div class="calc-screen">
-                <span class="formula">M = C(1 + i)<sup>t</sup></span>
-                <span class="result">= 16.105,10</span>
-                <div class="keys"><span>7</span><span>8</span><span>9</span><span>÷</span><span>4</span><span>5</span><span>6</span><span>×</span><span>√</span><span>π</span><span>xʸ</span><span>=</span></div>
-            </div>
-            <div class="calc-chart">
-                <svg viewBox="0 0 200 140" preserveAspectRatio="none" aria-hidden="true">
-                    <path class="grid-l" d="M0 35H200M0 70H200M0 105H200"/>
-                    <path class="curve-2" d="M0 120 L40 112 L80 100 L120 92 L160 80 L200 70"/>
-                    <path class="curve" d="M0 125 C60 122 100 110 130 85 S180 30 200 10"/>
-                </svg>
-            </div>
         </div>`,
     voxel: () => `
         <div class="art art-voxel">
