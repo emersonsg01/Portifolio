@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emerson Gonçalves · Conceito</title>
+    <meta name="description" content="Conceito de design do portfólio de Emerson Gonçalves, inspirado na linguagem visual da Apple.">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='16' fill='%23000'/><text x='50%' y='56%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='600' font-size='34' fill='%23fff'>e</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- navegação global -->
+    <header class="gnav" id="gnav">
+        <nav class="gnav-inner" aria-label="Global">
+            <a href="#topo" class="gnav-logo" aria-label="Início">e</a>
+            <div class="gnav-links" id="gnavLinks">
+                <a href="#em-foco">Em foco</a>
+                <a href="#projetos">Projetos</a>
+                <a href="#numeros">Números</a>
+                <a href="#destaques">Destaques</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#contato">Contato</a>
+            </div>
+            <button class="gnav-menu" id="gnavMenu" aria-label="Abrir menu" aria-expanded="false" aria-controls="gnavLinks"><span></span><span></span></button>
+        </nav>
+    </header>
+
+    <!-- navegação local (fica presa ao rolar) -->
+    <div class="lnav" id="lnav">
+        <div class="lnav-inner">
+            <a href="#topo" class="lnav-title">Emerson Gonçalves</a>
+            <div class="lnav-right">
+                <a href="#em-foco" class="lnav-link">Visão geral</a>
+                <a href="#contato" class="btn-pill btn-sm">Falar comigo</a>
+            </div>
+        </div>
+    </div>
+
+    <main id="topo">
+        <!-- HERO -->
+        <section class="hero dark">
+            <p class="eyebrow fade-in">Desenvolvedor de software</p>
+            <h1 class="hero-title fade-in">Emerson Gonçalves.</h1>
+            <p class="hero-sub fade-in"><span class="grad">Do pixel ao servidor.</span></p>
+            <div class="cta-row fade-in">
+                <a href="#em-foco" class="btn-pill">Ver projetos</a>
+                <a href="https://wa.me/5512996200288/" class="link-chev" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            </div>
+            <div class="hero-photo-wrap">
+                <figure class="hero-photo" id="heroPhoto">
+                    <img src="../profile.jpg?v=2" alt="Foto de Emerson de Souza Gonçalves" width="800" height="800">
+                </figure>
+            </div>
+        </section>
+
+        <!-- MANIFESTO: palavras acendem conforme a rolagem -->
+        <section class="manifesto dark">
+            <p class="manifesto-text" id="manifesto">Aplicações web. Jogos em tempo real. Automações com IA. Apps desktop que rodam na sua GPU. Tudo feito com o mesmo cuidado no acabamento, porque antes do código eu já editava vídeo, áudio e fazia design.</p>
+        </section>
+
+        <!-- EM FOCO: blocos de produto -->
+        <div id="em-foco" class="anchor"></div>
+        <section class="tile tile-dark reveal">
+            <p class="tile-eyebrow">Terra Viva</p>
+            <h2 class="tile-title">O planeta inteiro.<br>Ao vivo.</h2>
+            <p class="tile-sub">Painel climático global que cruza 11 fontes de dados do INPE, da NASA, da NOAA e do USGS.</p>
+            <div class="cta-row">
+                <a href="https://monitoramento-climatico.vercel.app" class="btn-pill" target="_blank" rel="noopener">Ver online</a>
+                <a href="#destaques" class="link-chev">Saiba mais</a>
+            </div>
+            <div class="device">
+                <img src="../assets/shots/terra-viva.webp" alt="Terra Viva: globo 3D com focos de queimada sobre a América do Sul" loading="lazy" width="1440" height="900">
+            </div>
+        </section>
+
+        <section class="tile tile-light reveal">
+            <p class="tile-eyebrow">Lumen Cut</p>
+            <h2 class="tile-title">Edite o vídeo.<br><span class="grad grad-violet">Ou peça para a IA editar.</span></h2>
+            <p class="tile-sub">Um editor de vídeo completo em JavaScript puro, com cor de cinema, servidor MCP e app para Windows.</p>
+            <div class="cta-row">
+                <a href="#destaques" class="link-chev">Saiba mais</a>
+                <span class="chip">App desktop</span>
+            </div>
+            <div class="device device-light">
+                <img src="../assets/shots/lumen-cut.webp" alt="Lumen Cut com um projeto aberto e a linha do tempo" loading="lazy" width="1440" height="900">
+            </div>
+        </section>
+
+        <section class="tile tile-dark reveal">
+            <p class="tile-eyebrow">Ultra Upscale</p>
+            <h2 class="tile-title">Seu estúdio.<br>Sua GPU. Sem nuvem.</h2>
+            <p class="tile-sub">Biblioteca, revelação, camadas e 26 upscalers com IA, rodando 100% no seu computador.</p>
+            <div class="cta-row">
+                <a href="#destaques" class="link-chev">Saiba mais</a>
+                <span class="chip chip-dark">App desktop</span>
+            </div>
+            <div class="device">
+                <img src="../assets/shots/ultra-upscale.webp" alt="IA Studio do Ultra Upscale com as receitas prontas" loading="lazy" width="1440" height="900">
+            </div>
+        </section>
+
+        <!-- GRADE DE PROJETOS -->
+        <section class="grid-section" id="projetos">
+            <div class="grid">
+                <article class="gtile gtile-light reveal">
+                    <p class="tile-eyebrow">Pokédex</p>
+                    <h3 class="gtile-title">Todos os 1025.</h3>
+                    <p class="gtile-sub">Busca, filtros, shiny e evoluções. Em React 19.</p>
+                    <div class="cta-row"><a href="https://pocket-monsters-frontend.vercel.app" class="link-chev" target="_blank" rel="noopener">Ver online</a><a href="https://github.com/emersonsg01/pocket-monsters-frontend" class="link-chev" target="_blank" rel="noopener">Código</a></div>
+                    <img src="../assets/shots/pokedex.webp" alt="Tela da Pokédex" loading="lazy" width="1200" height="750">
+                </article>
+                <article class="gtile gtile-dark reveal">
+                    <p class="tile-eyebrow">Genial</p>
+                    <h3 class="gtile-title">Matemática, <span class="grad">genialmente simples.</span></h3>
+                    <p class="gtile-sub">Mais de 60 fórmulas, gráficos e simulações.</p>
+                    <div class="cta-row"><a href="https://genial-five.vercel.app" class="link-chev" target="_blank" rel="noopener">Ver online</a><a href="https://github.com/emersonsg01/Genial" class="link-chev" target="_blank" rel="noopener">Código</a></div>
+                    <img src="../assets/shots/genial.webp" alt="Tela inicial do Genial" loading="lazy" width="1200" height="750">
+                </article>
+                <article class="gtile gtile-dark reveal">
+                    <p class="tile-eyebrow">Neon Orbit</p>
+                    <h3 class="gtile-title">Pinball. <span class="grad grad-pink">Refeito do zero.</span></h3>
+                    <p class="gtile-sub">Física própria, multibola e sons sintetizados.</p>
+                    <div class="cta-row"><a href="https://pin-ball-chi.vercel.app" class="link-chev" target="_blank" rel="noopener">Jogar</a><a href="https://github.com/emersonsg01/PinBall" class="link-chev" target="_blank" rel="noopener">Código</a></div>
+                    <img src="../assets/shots/pinball.webp" alt="Tela do Neon Orbit" loading="lazy" width="1200" height="750">
+                </article>
+                <article class="gtile gtile-light reveal">
+                    <p class="tile-eyebrow">Fábrica de Vídeos</p>
+                    <h3 class="gtile-title">Descreva. A IA produz.</h3>
+                    <p class="gtile-sub">Roteiro, cenas, narração e edição automáticos.</p>
+                    <div class="cta-row"><a href="https://github.com/emersonsg01/fabrica-de-videos" class="link-chev" target="_blank" rel="noopener">Código</a></div>
+                    <div class="pipeline" aria-hidden="true">
+                        <span>Roteiro</span><i></i><span>Cenas</span><i></i><span>Narração</span><i></i><span>Edição</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- NÚMEROS -->
+        <section class="numbers dark" id="numeros">
+            <h2 class="section-title reveal">Em números.</h2>
+            <div class="numbers-grid">
+                <div class="num reveal"><span class="num-value grad" data-count="38" id="statRepos">38</span><span class="num-label">repositórios no GitHub</span></div>
+                <div class="num reveal"><span class="num-value grad grad-green" data-count="120">120</span><span class="num-label">FPS no globo do Terra Viva,<br>antes eram 15</span></div>
+                <div class="num reveal"><span class="num-value grad grad-violet" data-count="26">26</span><span class="num-label">upscalers no Ultra Upscale</span></div>
+                <div class="num reveal"><span class="num-value grad grad-pink" data-count="9">9</span><span class="num-label">projetos no ar</span></div>
+            </div>
+        </section>
+
+        <!-- DESTAQUES (carrossel) -->
+        <section class="highlights" id="destaques">
+            <div class="highlights-head">
+                <h2 class="section-title reveal">Confira os destaques.</h2>
+            </div>
+            <div class="carousel" id="carousel">
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 30% 0%, #1d3b6e, #050a14)">
+                    <p class="hcard-eyebrow">Terra Viva</p>
+                    <h3>Um índice de risco de 0 a 100 para <span class="hl">qualquer ponto do planeta</span>, em 9 dimensões.</h3>
+                    <p class="hcard-formula">0,65 · s₁ + 0,35 · (s₂ + s₃) / 2</p>
+                </article>
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 70% 0%, #4a1d6e, #0d0614)">
+                    <p class="hcard-eyebrow">Lumen Cut</p>
+                    <h3>A IA analisa, corta, titula e colore o vídeo <span class="hl">em até 40 passos</span>. E tudo volta com um Ctrl+Z.</h3>
+                </article>
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 50% 0%, #6e3a1d, #140a05)">
+                    <p class="hcard-eyebrow">Terra Viva</p>
+                    <h3>Os dados chegam em <span class="hl">1,5 segundo</span>. Antes, uma API lenta podia levar 50.</h3>
+                </article>
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 30% 0%, #1d6e4a, #05140d)">
+                    <p class="hcard-eyebrow">Ultra Upscale</p>
+                    <h3>Ampliação sem limite. Testado com uma imagem de <span class="hl">230 megapixels</span>.</h3>
+                </article>
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 70% 0%, #6e1d3b, #14050a)">
+                    <p class="hcard-eyebrow">Lumen Cut</p>
+                    <h3>Câmera e gravador sincronizados sozinhos, com precisão <span class="hl">abaixo de 1 ms</span>.</h3>
+                </article>
+                <article class="hcard" style="--bg: radial-gradient(120% 80% at 50% 0%, #2a2a6e, #06061a)">
+                    <p class="hcard-eyebrow">Ultra Upscale</p>
+                    <h3>Roda em <span class="hl">qualquer GPU</span>: NVIDIA, AMD, Intel. Ou só na CPU.</h3>
+                </article>
+            </div>
+            <div class="carousel-ctrl">
+                <button class="round-btn" id="prevBtn" aria-label="Destaque anterior">‹</button>
+                <button class="round-btn" id="nextBtn" aria-label="Próximo destaque">›</button>
+            </div>
+        </section>
+
+        <!-- SERVIÇOS (comparativo) -->
+        <section class="compare" id="servicos">
+            <h2 class="section-title reveal">Qual é a sua ideia?</h2>
+            <div class="compare-grid">
+                <div class="col reveal">
+                    <div class="col-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="24" rx="3"/><path d="M18 40h12M24 34v6"/></svg>
+                    </div>
+                    <h3>Site</h3>
+                    <p class="col-sub">Para aparecer no Google e vender.</p>
+                    <ul>
+                        <li>Otimizado para SEO</li>
+                        <li>Rápido em qualquer celular</li>
+                        <li>Foco em captação de clientes</li>
+                    </ul>
+                    <p class="col-case">Já fiz para uma corretora com 40+ anos de mercado.</p>
+                </div>
+                <div class="col reveal">
+                    <div class="col-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><rect x="8" y="6" width="32" height="36" rx="3"/><path d="M15 16h18M15 24h18M15 32h10"/></svg>
+                    </div>
+                    <h3>Sistema</h3>
+                    <p class="col-sub">Para organizar o seu negócio.</p>
+                    <ul>
+                        <li>Front-end e back-end</li>
+                        <li>APIs e banco de dados</li>
+                        <li>Pensado para o dia a dia</li>
+                    </ul>
+                    <p class="col-case">Já fiz um PDV com estoque, cupons e parcelamento.</p>
+                </div>
+                <div class="col reveal">
+                    <div class="col-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48"><path d="M24 6l3.5 9.5L37 19l-9.5 3.5L24 32l-3.5-9.5L11 19l9.5-3.5z"/><path d="M36 30l1.6 4.4L42 36l-4.4 1.6L36 42l-1.6-4.4L30 36l4.4-1.6z"/></svg>
+                    </div>
+                    <h3>App com IA</h3>
+                    <p class="col-sub">Para automatizar o trabalho.</p>
+                    <ul>
+                        <li>Agentes e modelos locais</li>
+                        <li>Vídeo, imagem e dados</li>
+                        <li>Web ou desktop</li>
+                    </ul>
+                    <p class="col-case">Já fiz um editor de vídeo que edita sozinho.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRAJETÓRIA -->
+        <section class="journey dark" id="trajetoria">
+            <h2 class="section-title reveal">De um deploy<br>a apps com IA.</h2>
+            <ol class="years">
+                <li class="reveal"><span class="year">2022</span><p>A primeira Pokédex, em JavaScript puro.</p></li>
+                <li class="reveal"><span class="year">2024</span><p>Jogos no navegador, Node.js e uma API em PHP.</p></li>
+                <li class="reveal"><span class="year">2025</span><p>Primeiro cliente real, sistemas full stack e Java com MVC.</p></li>
+                <li class="reveal"><span class="year grad">2026</span><p>Terra Viva, Lumen Cut, Ultra Upscale e agentes de IA.</p></li>
+            </ol>
+        </section>
+
+        <!-- CONTATO -->
+        <section class="contact" id="contato">
+            <h2 class="contact-title reveal">Vamos conversar.</h2>
+            <p class="contact-sub reveal">Formado em ADS pela Anhembi Morumbi. Em São José dos Campos, atendendo todo o Brasil.</p>
+            <div class="cta-row center reveal">
+                <a href="https://wa.me/5512996200288/" class="btn-pill btn-lg" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/emerson-gon%C3%A7alves-a9ba6582/" class="link-chev" target="_blank" rel="noopener">LinkedIn</a>
+                <a href="https://github.com/emersonsg01" class="link-chev" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p class="footer-note">Este é um conceito de design inspirado na linguagem visual da Apple. Os números vêm da documentação de cada projeto. <a href="../">Ver o portfólio atual</a></p>
+            <div class="footer-cols">
+                <div><h4>Em foco</h4><a href="https://monitoramento-climatico.vercel.app" target="_blank" rel="noopener">Terra Viva</a><a href="#destaques">Lumen Cut</a><a href="#destaques">Ultra Upscale</a></div>
+                <div><h4>No ar</h4><a href="https://pocket-monsters-frontend.vercel.app" target="_blank" rel="noopener">Pokédex</a><a href="https://genial-five.vercel.app" target="_blank" rel="noopener">Genial</a><a href="https://pin-ball-chi.vercel.app" target="_blank" rel="noopener">Neon Orbit</a></div>
+                <div><h4>Contato</h4><a href="https://wa.me/5512996200288/" target="_blank" rel="noopener">WhatsApp</a><a href="https://www.linkedin.com/in/emerson-gon%C3%A7alves-a9ba6582/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/emersonsg01" target="_blank" rel="noopener">GitHub</a></div>
+            </div>
+            <p class="footer-legal">© <span id="year">2026</span> Emerson de Souza Gonçalves. São José dos Campos, SP.</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
